@@ -38,6 +38,8 @@ export const signup = async (
       status: ResponseStatus.FAILED,
       error: "Invalid email",
     });
+
+    return;
   }
 
   if (!wellKnownRegex.password.test(password)) {
@@ -96,6 +98,8 @@ export const signin = async (
       status: ResponseStatus.FAILED,
       error: "Email and password required",
     });
+
+    return;
   }
 
   try {
@@ -106,6 +110,8 @@ export const signin = async (
         status: ResponseStatus.FAILED,
         error: "User does not exist",
       });
+
+      return;
     }
 
     const user = users[0];
@@ -117,6 +123,8 @@ export const signin = async (
         status: ResponseStatus.FAILED,
         error: "Invalid password",
       });
+
+      return;
     }
 
     res.json({
